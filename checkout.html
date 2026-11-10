@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout | MerryShop</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      .checkout-container {
+        max-width: 1000px;
+        margin: 50px auto;
+        padding: 25px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .checkout-box {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      .checkout-box h2 {
+        color: #b08d35;
+        margin-bottom: 20px;
+      }
+
+      .checkout-box input,
+      .checkout-box textarea,
+      .checkout-box select {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-sizing: border-box;
+      }
+
+      .order-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .total {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #b08d35;
+      }
+
+      .place-order {
+        width: 100%;
+        padding: 14px;
+        margin-top: 20px;
+        background: #b08d35;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .place-order:hover {
+        background: #8c6b20;
+      }
+
+      @media (max-width: 700px) {
+        .checkout-container {
+          grid-template-columns: 1fr;
+          margin: 20px auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>MerryShop</h1>
+      <p>Complete Your Purchase</p>
+    </header>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">About Us</a>
+      <a href="checkout.html">Checkout</a>
+    </nav>
+
+    <h1 style="text-align: center; margin-top: 30px">Checkout</h1>
+
+    <div class="checkout-container">
+      <!-- Customer Information -->
+      <div class="checkout-box">
+        <h2>Delivery Information</h2>
+
+        <form id="checkout-form">
+          <input
+            type="text"
+            id="customer-name"
+            placeholder="Full Name"
+            required
+          />
+
+          <input
+            type="email"
+            id="customer-email"
+            placeholder="Email Address"
+            required
+          />
+
+          <input
+            type="tel"
+            id="customer-phone"
+            placeholder="Phone Number"
+            required
+          />
+
+          <textarea
+            id="customer-address"
+            placeholder="Complete Delivery Address"
+            rows="4"
+            required
+          ></textarea>
+
+          <select id="payment-method" required>
+            <option value="">Select Payment Method</option>
+            <option value="Cash on Delivery">Cash on Delivery</option>
+            <option value="GCash">GCash</option>
+          </select>
+
+          <button type="submit" class="place-order">Place Order</button>
+        </form>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="checkout-box">
+        <h2>Order Summary</h2>
+
+        <div id="order-items"></div>
+
+        <div class="total">Total: ₱<span id="total-price">0</span></div>
+      </div>
+    </div>
+
+    <script>
+      let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+      function displayOrder() {
+        const orderItems = document.getElementById("order-items");
+        let total = 0;
+
+        orderItems.innerHTML = "";
+
+        if (cartItems.length === 0) {
+          orderItems.innerHTML =
+            "<p>Your cart is empty. Please add products first.</p>";
+        }
+
+        cartItems.forEach((item) => {
+          total += item.price;
+
+          orderItems.innerHTML += `
+                    <div class="order-item">
+                        <span>${item.name}</span>
+                        <span>₱${item.price.toLocaleString()}</span>
+                    </div>
+                `;
+        });
+
+        document.getElementById("total-price").textContent =
+          total.toLocaleString();
+      }
+
+      displayOrder();
+
+      document
+        .getElementById("checkout-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          if (cartItems.length === 0) {
+            alert("Your cart is empty!");
+            return;
+          }
+
+          const name = document.getElementById("customer-name").value;
+
+          const payment = document.getElementById("payment-method").value;
+
+          alert(
+            "Thank you, " +
+              name +
+              "! Your order has been placed.\n" +
+              "Payment Method: " +
+              payment,
+          );
+
+          localStorage.removeItem("cartItems");
+
+          window.location.href = "index.html";
+        });
+    </script>
+  </body>
+</html>

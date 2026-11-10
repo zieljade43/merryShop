@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>My Shopping Cart | FreshMart</title>
+
+    <link rel="stylesheet" href="cart.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="cart-header">
+      <a href="index.html" class="logo"> Fresh<span>Mart.</span> </a>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#products">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="checkout.html">Checkout</a>
+      </nav>
+
+      <a href="cart.html" class="cart-link"> 🛒 My Cart </a>
+    </header>
+
+    <!-- CART SECTION -->
+    <main class="cart-container">
+      <h1>Shopping Cart</h1>
+
+      <p class="subtitle">Review your grocery items before checkout.</p>
+
+      <div class="cart-layout">
+        <!-- CART PRODUCTS -->
+        <section class="cart-items">
+          <div class="cart-heading">
+            <h2>Your Items</h2>
+            <span id="item-count">0 items</span>
+          </div>
+
+          <div id="cart-products"></div>
+        </section>
+
+        <!-- ORDER SUMMARY -->
+        <aside class="order-summary">
+          <h2>Order Summary</h2>
+
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="subtotal">₱0.00</span>
+          </div>
+
+          <div class="summary-row">
+            <span>Delivery Fee</span>
+            <span id="delivery">₱50.00</span>
+          </div>
+
+          <hr />
+
+          <div class="summary-row total">
+            <span>Total</span>
+            <span id="total">₱0.00</span>
+          </div>
+
+          <button onclick="window.location.href = 'checkout.html'">
+            Proceed to Checkout
+          </button>
+          <a href="index.html#products" class="continue-shopping">
+            ← Continue Shopping
+          </a>
+        </aside>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2026 FreshMart. All Rights Reserved.</p>
+    </footer>
+
+    <script src="cart.js"></script>
+  </body>
+</html>

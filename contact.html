@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Contact Us | FreshMart</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <a href="index.html" class="logo"> Fresh<span>Mart.</span> </a>
+
+      <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="index.html#products">Products</a>
+        <a href="product.html">Featured Product</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a href="login.php" class="cart-button"> Login </a>
+    </header>
+
+    <!-- CONTACT HERO -->
+    <section class="contact-hero">
+      <h1>Contact Us</h1>
+
+      <p>
+        We'd love to hear from you! Contact FreshMart for questions and
+        assistance.
+      </p>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-container">
+      <div class="contact-info">
+        <h2>Get In Touch</h2>
+
+        <p>Have questions about our grocery products? We're here to help!</p>
+
+        <div class="contact-item">
+          <h3>📍 Our Location</h3>
+          <p>Zone 2 Diclum Manolo Fortich, Bukidnon, Philippines</p>
+        </div>
+
+        <div class="contact-item">
+          <h3>📞 Phone Number</h3>
+          <p>+63 970 321 6395</p>
+        </div>
+
+        <div class="contact-item">
+          <h3>✉ Email Address</h3>
+          <p>nezieljades@gmail.com</p>
+        </div>
+
+        <div class="contact-item">
+          <h3>🕒 Business Hours</h3>
+          <p>Monday - Saturday</p>
+          <p>8:00 AM - 6:00 PM</p>
+        </div>
+      </div>
+
+      <!-- CONTACT FORM -->
+      <div class="contact-form">
+        <h2>Send Us a Message</h2>
+
+        <form id="contactForm">
+          <label for="name">Full Name</label>
+
+          <input type="text" id="name" placeholder="Enter your name" required />
+
+          <label for="email">Email Address</label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+
+          <label for="subject">Subject</label>
+
+          <input
+            type="text"
+            id="subject"
+            placeholder="Enter subject"
+            required
+          />
+
+          <label for="message">Message</label>
+
+          <textarea
+            id="message"
+            rows="5"
+            placeholder="Write your message here..."
+            required
+          ></textarea>
+
+          <button type="submit">Send Message</button>
+
+          <p id="form-message"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <h2>FreshMart.</h2>
+
+      <p>Your trusted online grocery shop.</p>
+
+      <p>© 2026 FreshMart. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const name = document.getElementById("name").value;
+
+          document.getElementById("form-message").textContent =
+            "Thank you, " + name + "! Your message has been prepared.";
+
+          this.reset();
+        });
+    </script>
+  </body>
+</html>

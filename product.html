@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Surf Detergent | FreshMart</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <a href="index.html" class="logo"> Fresh<span>Mart.</span> </a>
+
+      <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="index.html#products">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html" class="cart-button">
+          🛒 Cart (<span id="cart-count">0</span>)
+        </a>
+      </nav>
+
+      <a href="cart.html" class="cart-button"> 🛒 Cart </a>
+    </header>
+
+    <!-- GROCERY CATEGORIES -->
+    <section class="categories" id="categories">
+      <h2>Shop by Category</h2>
+
+      <div class="category-list">
+        <button onclick="filterProducts('All')">All Products</button>
+
+        <button onclick="filterProducts('Household')">🧺 Household</button>
+
+        <button onclick="filterProducts('Eggs')">🥚 Eggs</button>
+
+        <button onclick="filterProducts('Snacks')">🍫 Snacks</button>
+
+        <button onclick="filterProducts('Personal Care')">
+          🧴 Personal Care
+        </button>
+
+        <button onclick="filterProducts('Cooking Essentials')">
+          🛢️ Cooking Essentials
+        </button>
+      </div>
+    </section>
+
+    <!-- PRODUCT SECTION -->
+    <section class="product-container">
+      <div class="product-image">
+        <img
+          src="https://placehold.co/800x600/e8f4ff/2455a4?text=SURF+DETERGENT"
+          alt="Surf Detergent Powder"
+        />
+      </div>
+
+      <div class="product-details">
+        <span class="category"> Household Products </span>
+
+        <h1>Surf Detergent Powder</h1>
+
+        <div class="rating">⭐⭐⭐⭐⭐ <span>(5.0 Rating)</span></div>
+
+        <h2 class="price">₱12.00 <small>/ sachet</small></h2>
+
+        <p class="description">
+          Keep your clothes clean and fresh with Surf Detergent Powder. Perfect
+          for everyday laundry, providing a fresh fragrance and effective
+          cleaning for your family's clothes.
+        </p>
+
+        <p class="stock">✓ Available in Stock</p>
+
+        <div class="quantity">
+          <label for="quantity">Quantity:</label>
+
+          <input type="number" id="quantity" value="1" min="1" max="20" />
+        </div>
+
+        <button class="add-cart" onclick="addToCart()">🛒 Add to Cart</button>
+
+        <button class="buy-now" onclick="buyNow()">Buy Now</button>
+      </div>
+    </section>
+
+    <!-- PRODUCT INFORMATION -->
+    <section class="information">
+      <h2>Product Information</h2>
+
+      <div class="info-list">
+        <p><strong>Product:</strong> Surf Detergent Powder</p>
+
+        <p><strong>Category:</strong> Household Products</p>
+
+        <p><strong>Price:</strong> ₱12.00 / sachet</p>
+
+        <p><strong>Unit:</strong> Sachet</p>
+
+        <p><strong>Availability:</strong> In Stock</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <h2>FreshMart.</h2>
+
+      <p>Your trusted online grocery shop.</p>
+
+      <p>© 2026 FreshMart. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      function filterProducts(category) {
+        window.location.href = "index.html#products";
+      }
+
+      function addToCart() {
+        const quantity = Number(document.getElementById("quantity").value);
+
+        if (!Number.isInteger(quantity) || quantity < 1 || quantity > 20) {
+          alert("Please enter a quantity from 1 to 20.");
+          return;
+        }
+
+        const total = quantity * 12;
+
+        alert(
+          "Surf Detergent added to cart!\n" +
+            "Quantity: " +
+            quantity +
+            "\nTotal: ₱" +
+            total.toFixed(2),
+        );
+      }
+
+      function buyNow() {
+        addToCart();
+      }
+    </script>
+  </body>
+</html>
